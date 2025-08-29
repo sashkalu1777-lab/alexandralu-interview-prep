@@ -1,0 +1,9 @@
+chromadb
+dotenv
+langchain
+langchainhub
+langgraph
+langchain-community
+langchain-openai
+langchain-text-splitters
+tiktoken
