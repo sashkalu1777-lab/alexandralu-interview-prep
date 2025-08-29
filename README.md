@@ -20,9 +20,9 @@ A Retrieval-Augmented Generation (RAG) system built with LangChain and LangGraph
 
 ```
 suncorp-interview-prep/
-├── chroma_db/                    # Vector database storage
-├── logs/                         # Conversation and performance logs
-├── pdfs/                         # Source documents
+├── chroma_db/                          # Vector database storage
+├── logs/                               # Conversation and performance logs
+├── pdfs/                               # Source documents
 │   ├── 20250806_CV_Xiaoshi Lu (Alexandra).pdf
 │   └── suncorp_job_description.pdf
 ├── langgraph-agentic-rag-base.ipynb    # The base agentic rag pipeline with LangGraph.
