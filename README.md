@@ -1,21 +1,20 @@
 # Suncorp Interview Prep - RAG Agent
 
-A sophisticated Retrieval-Augmented Generation (RAG) system built with LangChain and LangGraph for interview preparation and document analysis. This project demonstrates an intelligent agent that can process multiple documents, answer questions, and provide relevant information for interview scenarios.
+A Retrieval-Augmented Generation (RAG) system built with LangChain and LangGraph for Suncorp interview preparation. This project demonstrates an intelligent agentic workflow that can process multiple documents, answer questions, measure retrieval quality, and keep logging system.
 
 ## 🚀 Features
 
 ### Core Functionality
-- **Multi-Document RAG**: Process and query multiple PDF documents simultaneously
-- **Intelligent Query Processing**: Automatic query rewriting and relevance assessment
-- **Document Relevance Grading**: AI-powered evaluation of retrieved document relevance
-- **Conversation Logging**: Comprehensive logging of all interactions and metrics
-- **Vector Database**: ChromaDB integration for efficient document storage and retrieval
+- **Multi-Document RAG**: Process and query multiple PDF documents simultaneously.
+- **Document Relevance Grading**: AI-powered evaluation of retrieved document relevance.
+- **Intelligent Query Processing**: Automatic query rewriting and relevance assessment.
+- **Conversation Logging**: Comprehensive logging of key interactions.
 
 ### Advanced Capabilities
-- **Agentic Decision Making**: The system decides when to retrieve information vs. provide direct answers
-- **Query Transformation**: Automatically rewrites queries when retrieved documents are irrelevant
-- **Performance Metrics**: Tracks retrieval accuracy and provides detailed analytics
-- **Streaming Responses**: Real-time response generation with progress tracking
+- **Agentic Decision Making**: The system decides when to retrieve information vs. provide direct answers.
+- **Query Transformation**: Automatically rewrites queries when retrieved documents are irrelevant.
+- **Performance Metrics**: Tracks retrieval accuracy.
+- **Streaming Responses**: Real-time response generation with progress tracking.
 
 ## 📁 Project Structure
 
@@ -26,18 +25,16 @@ suncorp-interview-prep/
 ├── pdfs/                         # Source documents
 │   ├── 20250806_CV_Xiaoshi Lu (Alexandra).pdf
 │   └── suncorp_job_description.pdf
-├── suncorp-interview-prep.ipynb              # Single document RAG implementation
-├── suncorp-interview-prep-multi-files.ipynb  # Multi-document RAG implementation
-├── original-langgraph-agentic-rag.ipynb      # Original reference implementation
-├── requirements.txt              # Python dependencies
-├── plan.txt                      # Future development plans
-└── README.md                     # This file
+├── langgraph-agentic-rag-base.ipynb    # The base agentic rag pipeline with LangGraph.
+├── langgraph-agentic-rag.ipynb         # The polished and upgraded rag pipeline to showcase.
+├── requirements.txt                    # Python dependencies
+└── README.md                           # This file
 ```
 
 ## 🛠️ Installation
 
 ### Prerequisites
-- Python 3.8+
+- Python 3.13+
 - OpenAI API key
 
 ### Setup Instructions
@@ -54,7 +51,7 @@ suncorp-interview-prep/
    ```
 
 3. **Set up environment variables**
-   Create a `.env` file in the root directory:
+   Update `.env` file in the root directory:
    ```env
    OPENAI_API_KEY=your_openai_api_key_here
    ```
@@ -64,29 +61,31 @@ suncorp-interview-prep/
 
 ## 📖 Usage
 
-### Single Document RAG (`suncorp-interview-prep.ipynb`)
-This implementation focuses on querying a single document (CV) with intelligent retrieval and response generation.
+### Base Document RAG (`langgraph-agentic-rag-base.ipynb`)
+This implementation focuses on querying a single document with intelligent retrieval and response generation.
 
 **Key Features:**
-- Processes individual CV documents
+- Processes individual PDF documents
 - Intelligent query routing
 - Relevance assessment
-- Detailed conversation logging
 
-### Multi-Document RAG (`suncorp-interview-prep-multi-files.ipynb`)
-This enhanced version can handle multiple documents simultaneously, making it perfect for interview scenarios where you need to cross-reference different sources.
+### Upgraded Document RAG (`langgraph-agentic-rag.ipynb`)
+This enhanced version can handle multiple documents simultaneously. It integrates version control in Vector Store, format the outputs of workflow, introduce memory and thread for persistent chat, set up the logging system to capture key information and retrieval quality for each session.
 
 **Key Features:**
 - Multi-document processing
 - Cross-document information synthesis
-- Enhanced query transformation
-- Comprehensive performance metrics
+- Version control in Vector Store
+- Clear and human-friendly workflow outputs
+- Consistent chat history with memories
+- Logging system with key message exchanges
+- Retrieval quality measurement
 
 ### Running the System
 
-1. **Open the desired notebook** in Jupyter or VS Code
-2. **Execute all cells** to set up the environment
-3. **Run the test cases** to see the system in action
+1. **Open the desired notebook** in IDE.
+2. **Execute all cells** to set up the environment.
+3. **Run the test cases** to see the system in action and adjust based on your interets and needs.
 
 Example usage:
 ```python
@@ -97,6 +96,9 @@ logs = []
 # Ask questions
 deal_with_single_question(logs, graph, "What are Xiaoshi Lu's technical skills?", config)
 deal_with_single_question(logs, graph, "Is she eligible for the Suncorp position?", config)
+
+# Run the cells to the end. 
+# Logs are stored in logs/interview_20250829_212643.csv
 ```
 
 ## 🔧 Technical Architecture
