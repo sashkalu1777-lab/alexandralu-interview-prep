@@ -1,34 +1,34 @@
 # Suncorp Interview Prep - RAG Agent
 
-A Retrieval-Augmented Generation (RAG) system built with LangChain and LangGraph for Suncorp interview preparation. This project demonstrates an intelligent agentic workflow that can process multiple documents, answer questions, measure retrieval quality, and keep logging system.
+A Retrieval-Augmented Generation (RAG) system built with LangChain and LangGraph for Suncorp interview preparation. This project demonstrates an intelligent agentic workflow that can process multiple documents, answer questions, measure retrieval quality, and keep a logging system for future reference at thread level.
 
 ## 🚀 Features
 
 ### Core Functionality
 - **Multi-Document RAG**: Process and query multiple PDF documents simultaneously.
-- **Document Relevance Grading**: AI-powered evaluation of retrieved document relevance.
-- **Intelligent Query Processing**: Automatic query rewriting and relevance assessment.
-- **Conversation Logging**: Comprehensive logging of key interactions.
+- **Streaming Responses**: Generate response real-time with progress tracking.
+- **Memory and Thread Management**: Manage the message exchanges with memory at thread level.
 
 ### Advanced Capabilities
 - **Agentic Decision Making**: The system decides when to retrieve information vs. provide direct answers.
-- **Query Transformation**: Automatically rewrites queries when retrieved documents are irrelevant.
-- **Performance Metrics**: Tracks retrieval accuracy.
-- **Streaming Responses**: Real-time response generation with progress tracking.
+- **Document Relevance Grading**: Evaluates the relevance of retrieved document with AI power.
+- **Intelligent Query Processing**: Automatically rewrites queries when retrieved documents are irrelevant.
+- **Conversation Logging**: Take and keep comprehensive logging of key interactions of each thread.
+- **Performance Metrics**: Calculate and tracks Retrieval accuracy.
 
 ## 📁 Project Structure
 
 ```
 suncorp-interview-prep/
-├── chroma_db/                          # Vector database storage
-├── logs/                               # Conversation and performance logs
-├── pdfs/                               # Source documents
-│   ├── 20250806_CV_Xiaoshi Lu (Alexandra).pdf
+├── chroma_db/                                  # Vector database storage
+├── logs/                                       # Conversation and performance logs
+├── pdfs/                                       # Source documents
+│   ├── 20250806_CV_Xiaoshi Lu (Alexandra).pdf  
 │   └── suncorp_job_description.pdf
-├── langgraph-agentic-rag-base.ipynb    # The base agentic rag pipeline with LangGraph.
-├── langgraph-agentic-rag.ipynb         # The polished and upgraded rag pipeline to showcase.
-├── requirements.txt                    # Python dependencies
-└── README.md                           # This file
+├── langgraph-agentic-rag-base.ipynb            # The base agentic rag pipeline with LangGraph.
+├── langgraph-agentic-rag.ipynb                 # The polished and upgraded rag pipeline to showcase.
+├── requirements.txt                            # Python dependencies
+└── README.md                                   # This file
 ```
 
 ## 🛠️ Installation
@@ -65,21 +65,21 @@ suncorp-interview-prep/
 This implementation focuses on querying a single document with intelligent retrieval and response generation.
 
 **Key Features:**
-- Processes individual PDF documents
-- Intelligent query routing
-- Relevance assessment
+- Processes individual PDF documents within a single session.
+- Assess retrieval relevance and rewrite query if needed.
+- Generate response.
 
 ### Upgraded Document RAG (`langgraph-agentic-rag.ipynb`)
-This enhanced version can handle multiple documents simultaneously. It integrates version control in Vector Store, format the outputs of workflow, introduce memory and thread for persistent chat, set up the logging system to capture key information and retrieval quality for each session.
+This enhanced version can handle multiple documents simultaneously. It integrates version control in Vector Store, formats the outputs of workflow so they are more human-friendly, introduces memory and thread for persistent chat and message management, sets up the logging system to capture key information and retrieval quality for each thread.
 
 **Key Features:**
-- Multi-document processing
-- Cross-document information synthesis
-- Version control in Vector Store
-- Clear and human-friendly workflow outputs
-- Consistent chat history with memories
-- Logging system with key message exchanges
-- Retrieval quality measurement
+- Multi-document processing.
+- Cross-document information synthesis.
+- Version control in Vector Store.
+- Clear and human-friendly workflow outputs.
+- Consistent chat history with memories.
+- Logging system with key message exchanges.
+- Retrieval quality measurement.
 
 ### Running the System
 
@@ -105,58 +105,59 @@ deal_with_single_question(logs, graph, "Is she eligible for the Suncorp position
 
 ### Core Components
 
-1. **Vector Store (ChromaDB)**
+1. **Document Processing**
+   - PDF loading and chunking
+   - Text splitting with overlap
+   - Metadata management
+   
+2. **Retriever tool with Vector Store (ChromaDB)**
    - Document embedding and storage
    - Semantic search capabilities
    - Persistent storage with version control
 
-2. **LangGraph Workflow**
-   - State management
+3. **LangGraph Workflow**
+   - State, memory, and thread management
    - Conditional routing
    - Tool integration
+   - Human-friendly outputs
+   - Logging system
 
-3. **Intelligent Agent**
+4. **Intelligent Agent**
    - Decision making for retrieval vs. direct response
    - Tool calling capabilities
    - Context-aware responses
 
-4. **Document Processing**
-   - PDF loading and chunking
-   - Text splitting with overlap
-   - Metadata management
-
 ### Workflow Steps
 
-1. **Query Input**: User asks a question
-2. **Agent Decision**: System decides whether to retrieve documents
-3. **Document Retrieval**: If needed, searches vector database
-4. **Relevance Assessment**: AI evaluates if retrieved documents are relevant
-5. **Query Transformation**: If irrelevant, rewrites the query
-6. **Response Generation**: Generates final answer based on context
-7. **Logging**: Records all interactions and metrics
+1. **Query Input**: User asks a question.
+2. **Agent Decision**: System decides whether to retrieve documents.
+3. **Document Retrieval**: If needed, searches vector database.
+4. **Relevance Assessment**: AI evaluates if retrieved documents are relevant.
+5. **Query Transformation**: If irrelevant, rewrites the query and tries another retrieval.
+6. **Response Generation**: Generates final answer based on the context and outputs readible information.
+7. **Logging**: Records key interactions and calculates metrics.
 
 ## 📊 Performance Metrics
 
 The system tracks several key metrics:
-- **Retrieval Count**: Number of document retrievals per conversation
-- **Rewrite Count**: Number of query rewrites needed
-- **Relevance Percentage**: Accuracy of document retrieval
-- **Response Quality**: Based on context relevance
+- **Retrieval Count**: Number of document retrievals per user question.
+- **Rewrite Count**: Number of query rewrites needed  per user question.
+- **Relevance Percentage**: Accuracy of document retrieval, which means the one-time shooting retrieval vs. total retrieval per thread.
 
 ## 🔮 Future Development
 
-According to `plan.txt`, upcoming features include:
-- **RAGAS Integration**: Enhanced retriever quality evaluation
-- **Advanced Analytics**: More sophisticated performance metrics
-- **UI Improvements**: Better visualization of results
+Upcoming features include:
+- **RAGAS Integration**: Enhanced retriever quality evaluation with testing dataset.
+- **Advanced Analytics**: More sophisticated performance metrics to evalute resonse quality.
+- **UI Improvements**: Better visualization of results with Gradio.
 
 ## 🤝 Contributing
 
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Add tests if applicable
-5. Submit a pull request
+1. Fork the repository.
+2. Create a feature branch.
+3. Make your changes.
+4. Add tests if applicable.
+5. Submit a pull request.
 
 ## 📝 License
 
@@ -167,24 +168,24 @@ This project is for educational and interview preparation purposes.
 ### Common Issues
 
 1. **OpenAI API Key Not Set**
-   - Ensure your `.env` file contains the correct API key
-   - Check that the key has sufficient credits
+   - Ensure your `.env` file contains the correct API key.
+   - Check that the key has sufficient credits.
 
 2. **ChromaDB Issues**
-   - Clear the `chroma_db/` directory if experiencing corruption
-   - Ensure write permissions in the project directory
+   - Clear the `chroma_db/` directory if experiencing corruption.
+   - Ensure write permissions in the project directory.
 
 3. **PDF Loading Errors**
-   - Verify PDF files are not corrupted
-   - Check file paths in the notebook
+   - Verify PDF files are not corrupted.
+   - Check file paths in the notebook.
 
 ### Getting Help
 
 If you encounter issues:
-1. Check the logs in the `logs/` directory
-2. Review the error messages in the notebook output
-3. Verify all dependencies are installed correctly
+1. Check the logs in the `logs/` directory.
+2. Review the error messages in the notebook output.
+3. Verify all dependencies are installed correctly.
 
 ---
 
-**Note**: This system is designed for interview preparation and demonstrates advanced RAG capabilities. It processes real documents (CV and job descriptions) to provide relevant, contextual responses for interview scenarios.
+**Note**: This system is designed for interview preparation and demonstrates advanced RAG capabilities. 
