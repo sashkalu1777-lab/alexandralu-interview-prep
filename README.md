@@ -21,6 +21,7 @@ A Retrieval-Augmented Generation (RAG) system built with LangChain and LangGraph
 ```
 suncorp-interview-prep/
 ├── chroma_db/                                  # Vector database storage
+├── chroma_db_test/                             # Vector database storage for base version
 ├── logs/                                       # Conversation and performance logs
 ├── pdfs/                                       # Source documents
 │   ├── 20250806_CV_Xiaoshi Lu (Alexandra).pdf  
