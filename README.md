@@ -33,6 +33,7 @@ suncorp-interview-prep/
 ├── langgraph-agentic-rag.ipynb                 # The polished and upgraded rag pipeline to showcase.
 ├── requirements.txt                            # Python dependencies
 └── README.md                                   # This file
+└── workflow.png                                # The workflow chart
 ```
 
 ## Installation
