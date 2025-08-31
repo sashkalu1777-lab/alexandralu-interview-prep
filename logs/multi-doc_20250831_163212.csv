@@ -1,0 +1,5 @@
+ThreadID,DateTime,OriginalQuestion,FinalAnswer,RetrieverCount,RewriteCount
+multi-doc,20250831_162612,"Hi, I'm Alexandra.",Hello Alexandra! How can I assist you today?,0,0
+multi-doc,20250831_162618,What does Xiaoshi Lu like in spare time?,"Xiaoshi Lu enjoys watching old-style movies, listening to pop music in unfamiliar languages, swimming, and hiking in her spare time.",1,0
+multi-doc,20250831_162627,Tell me something about Xiaoshi Lu's relationship with Dima Bilan,"There is no information available regarding any relationship between Xiaoshi Lu and Dima Bilan. If you have any other questions or need information on a different topic, feel free to ask!",1,1
+multi-doc,20250831_162641,Is Xiaoshi Lu eligible for Suncorp job?,"Yes, Xiaoshi Lu is eligible for the Suncorp job. Her experience as a data scientist with skills in Python, SQL, statistical analysis, machine learning, and Generative AI aligns well with the requirements of the Data Scientist role at Suncorp. Additionally, her proficiency in stakeholder management complements the behavioral expectations at Suncorp.",1,0
