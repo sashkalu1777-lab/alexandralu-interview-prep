@@ -2,6 +2,8 @@
 
 A Retrieval-Augmented Generation (RAG) system built with LangChain and LangGraph for Suncorp interview preparation. This project demonstrates an intelligent agentic workflow that can process multiple documents, answer questions, measure retrieval quality, and keep a logging system for future reference at thread level.
 
+![alt text](workflow.png)
+
 ## Features
 
 ### Core Functionality
@@ -134,8 +136,6 @@ deal_with_single_question(logs, graph, "Is she eligible for the Suncorp position
    - Context-aware responses
 
 ### Workflow Steps
-
-![alt text](workflow.png)
 
 1. **Query Input**: User asks a question.
 2. **Agent Decision**: System decides whether to retrieve documents.
