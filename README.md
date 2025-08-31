@@ -2,21 +2,22 @@
 
 A Retrieval-Augmented Generation (RAG) system built with LangChain and LangGraph for Suncorp interview preparation. This project demonstrates an intelligent agentic workflow that can process multiple documents, answer questions, measure retrieval quality, and keep a logging system for future reference at thread level.
 
-## 🚀 Features
+## Features
 
 ### Core Functionality
 - **Multi-Document RAG**: Process and query multiple PDF documents simultaneously.
 - **Streaming Responses**: Generate response real-time with progress tracking.
 - **Memory and Thread Management**: Manage the message exchanges with memory at thread level.
+- **LangFuse Tracing**: Use LangFuse to trace the detailed message exchanges, tool calling, and costs.
 
 ### Advanced Capabilities
 - **Agentic Decision Making**: The system decides when to retrieve information vs. provide direct answers.
 - **Document Relevance Grading**: Evaluates the relevance of retrieved document with AI power.
 - **Intelligent Query Processing**: Automatically rewrites queries when retrieved documents are irrelevant.
-- **Conversation Logging**: Take and keep comprehensive logging of key interactions of each thread.
+- **Conversation Logging**: Take and keep comprehensive logging of key interactions and metrics of each thread for all audiences.
 - **Performance Metrics**: Calculate and tracks Retrieval accuracy.
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 suncorp-interview-prep/
@@ -32,7 +33,7 @@ suncorp-interview-prep/
 └── README.md                                   # This file
 ```
 
-## 🛠️ Installation
+## Installation
 
 ### Prerequisites
 - Python 3.13+
@@ -54,13 +55,15 @@ suncorp-interview-prep/
 3. **Set up environment variables**
    Update `.env` file in the root directory:
    ```env
-   OPENAI_API_KEY=your_openai_api_key_here
+   OPENAI_API_KEY=your_openai_api_key
+   LANGFUSE_PUBLIC_KEY=your_langfuse_public_key
+   LANGFUSE_SECRET_KEY=your_langfuse_secret_key
    ```
 
 4. **Prepare documents**
    Place your PDF documents in the `pdfs/` directory.
 
-## 📖 Usage
+## Usage
 
 ### Base Document RAG (`langgraph-agentic-rag-base.ipynb`)
 This implementation focuses on querying a single document with intelligent retrieval and response generation.
@@ -71,7 +74,7 @@ This implementation focuses on querying a single document with intelligent retri
 - Generate response.
 
 ### Upgraded Document RAG (`langgraph-agentic-rag.ipynb`)
-This enhanced version can handle multiple documents simultaneously. It integrates version control in Vector Store, formats the outputs of workflow so they are more human-friendly, introduces memory and thread for persistent chat and message management, sets up the logging system to capture key information and retrieval quality for each thread.
+This enhanced version can handle multiple documents simultaneously. It integrates version control in Vector Store, formats the outputs of workflow so they are more human-friendly, introduces memory and thread for persistent chat and message management, uses LangFuse for real-time monitoring and tracing, sets up the logging system to capture key information and retrieval quality for each thread.
 
 **Key Features:**
 - Multi-document processing.
@@ -79,7 +82,8 @@ This enhanced version can handle multiple documents simultaneously. It integrate
 - Version control in Vector Store.
 - Clear and human-friendly workflow outputs.
 - Consistent chat history with memories.
-- Logging system with key message exchanges.
+- LangFuse tracing for detailed message exchanges, tool calling, and costs.
+- Local logging system with key message exchanges and metrics for all audiences.
 - Retrieval quality measurement.
 
 ### Running the System
@@ -91,7 +95,7 @@ This enhanced version can handle multiple documents simultaneously. It integrate
 Example usage:
 ```python
 # Initialize the system
-config = {"configurable": {"thread_id": "interview", "questions": []}}
+config = {"configurable": {"thread_id": "interview", "questions": [], "callbacks": [langfuse_handler]}}
 logs = []
 
 # Ask questions
@@ -102,7 +106,7 @@ deal_with_single_question(logs, graph, "Is she eligible for the Suncorp position
 # Logs are stored in logs/interview_20250829_212643.csv
 ```
 
-## 🔧 Technical Architecture
+## Technical Architecture
 
 ### Core Components
 
@@ -121,7 +125,8 @@ deal_with_single_question(logs, graph, "Is she eligible for the Suncorp position
    - Conditional routing
    - Tool integration
    - Human-friendly outputs
-   - Logging system
+   - LangFuse tracing
+   - Local logging system
 
 4. **Intelligent Agent**
    - Decision making for retrieval vs. direct response
@@ -136,23 +141,24 @@ deal_with_single_question(logs, graph, "Is she eligible for the Suncorp position
 4. **Relevance Assessment**: AI evaluates if retrieved documents are relevant.
 5. **Query Transformation**: If irrelevant, rewrites the query and tries another retrieval.
 6. **Response Generation**: Generates final answer based on the context and outputs readible information.
-7. **Logging**: Records key interactions and calculates metrics.
+7. **LangFuse Tracing**: Trace detailed message exchanges, tool calling and costs.
+9. **Logging**: Records key interactions and calculates metrics for all audiences.
 
-## 📊 Performance Metrics
+## Performance Metrics
 
 The system tracks several key metrics:
 - **Retrieval Count**: Number of document retrievals per user question.
 - **Rewrite Count**: Number of query rewrites needed  per user question.
 - **Relevance Percentage**: Accuracy of document retrieval, which means the one-time shooting retrieval vs. total retrieval per thread.
 
-## 🔮 Future Development
+## Future Development
 
 Upcoming features include:
 - **RAGAS Integration**: Enhanced retriever quality evaluation with testing dataset.
 - **Advanced Analytics**: More sophisticated performance metrics to evalute resonse quality.
 - **UI Improvements**: Better visualization of results with Gradio.
 
-## 🤝 Contributing
+## Contributing
 
 1. Fork the repository.
 2. Create a feature branch.
@@ -160,11 +166,11 @@ Upcoming features include:
 4. Add tests if applicable.
 5. Submit a pull request.
 
-## 📝 License
+## License
 
 This project is for educational and interview preparation purposes.
 
-## 🆘 Troubleshooting
+## Troubleshooting
 
 ### Common Issues
 
@@ -172,11 +178,15 @@ This project is for educational and interview preparation purposes.
    - Ensure your `.env` file contains the correct API key.
    - Check that the key has sufficient credits.
 
-2. **ChromaDB Issues**
+2. **LangFuse Tracing Pending**
+   - Ensure your `.env` file contains the correct API key.
+   - Check host name in US or in EU.
+
+3. **ChromaDB Issues**
    - Clear the `chroma_db/` directory if experiencing corruption.
    - Ensure write permissions in the project directory.
 
-3. **PDF Loading Errors**
+4. **PDF Loading Errors**
    - Verify PDF files are not corrupted.
    - Check file paths in the notebook.
 
@@ -185,6 +195,7 @@ This project is for educational and interview preparation purposes.
 If you encounter issues:
 1. Check the logs in the `logs/` directory.
 2. Review the error messages in the notebook output.
+3. Check the tracing records in LangFuse.
 3. Verify all dependencies are installed correctly.
 
 ---
