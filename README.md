@@ -135,6 +135,8 @@ deal_with_single_question(logs, graph, "Is she eligible for the Suncorp position
 
 ### Workflow Steps
 
+![alt text](workflow.png)
+
 1. **Query Input**: User asks a question.
 2. **Agent Decision**: System decides whether to retrieve documents.
 3. **Document Retrieval**: If needed, searches vector database.
