@@ -4,7 +4,7 @@ A Retrieval-Augmented Generation (RAG) system built with LangChain and LangGraph
 
 This project demonstrates an intelligent agentic workflow that can process multiple documents, answer questions, measure retrieval quality, use LangFuse to trace message exchanges and costs, and keep a logging system for future reference at thread level.
 
-With use case, it consumes job description and applicant documents and can help decide whether the applicant is a good fit for the positionm, which can be transferred to many use case such as if the claim is eligible for some policies.
+With use case, it consumes job description and applicant documents and can help decide whether the applicant is a good fit for the position, which can be transferred to many use case such as if the claim is eligible for some policies.
 
 ![alt text](workflow.png)
 
