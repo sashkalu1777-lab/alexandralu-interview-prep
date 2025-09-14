@@ -1,6 +1,6 @@
-# Suncorp Interview Prep - RAG Agent
+# Interview Prep - RAG Agent
 
-A Retrieval-Augmented Generation (RAG) system built with LangChain and LangGraph for Suncorp interview preparation. 
+A Retrieval-Augmented Generation (RAG) system built with LangChain and LangGraph for interview preparation. 
 
 This project demonstrates an intelligent agentic workflow that can process multiple documents, answer questions, measure retrieval quality, use LangFuse to trace message exchanges and costs, and keep a logging system for future reference at thread level.
 
@@ -26,13 +26,14 @@ With use case, it consumes job description and applicant documents and can help 
 ## Project Structure
 
 ```
-suncorp-interview-prep/
+interview-prep/
 ├── chroma_db/                                  # Vector database storage
 ├── chroma_db_test/                             # Vector database storage for base version
 ├── logs/                                       # Conversation and performance logs
 ├── pdfs/                                       # Source documents
 │   ├── 20250806_CV_Xiaoshi Lu (Alexandra).pdf  
-│   └── suncorp_job_description.pdf
+│   ├── suncorp_job_description.pdf
+│   └── commonwealth_bank_job_description.pdf
 ├── langgraph-agentic-rag-base.ipynb            # The base agentic rag pipeline with LangGraph.
 ├── langgraph-agentic-rag.ipynb                 # The polished and upgraded rag pipeline to showcase.
 ├── requirements.txt                            # Python dependencies
@@ -51,7 +52,7 @@ suncorp-interview-prep/
 1. **Clone the repository**
    ```bash
    git clone <repository-url>
-   cd suncorp-interview-prep
+   cd alexandralu-interview-prep
    ```
 
 2. **Install dependencies**
@@ -107,7 +108,7 @@ logs = []
 
 # Ask questions
 deal_with_single_question(logs, graph, "What are Xiaoshi Lu's technical skills?", config)
-deal_with_single_question(logs, graph, "Is she eligible for the Suncorp position?", config)
+deal_with_single_question(logs, graph, "Is she eligible for the [company] position?", config)
 
 # Run the cells to the end. 
 # Logs are stored in logs/interview_20250829_212643.csv
