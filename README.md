@@ -1,6 +1,6 @@
-# Suncorp Interview Prep - RAG Agent
+# Demo - RAG Agent
 
-A Retrieval-Augmented Generation (RAG) system built with LangChain and LangGraph for Suncorp interview preparation. 
+A Retrieval-Augmented Generation (RAG) system built with LangChain and LangGraph for demo. 
 
 This project demonstrates an intelligent agentic workflow that can process multiple documents, answer questions, measure retrieval quality, use LangFuse to trace message exchanges and costs, and keep a logging system for future reference at thread level.
 
